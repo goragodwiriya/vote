@@ -1,0 +1,53 @@
+<form id="setup_frm" class="setup_frm" method="post" autocomplete="off" action="{WEBURL}admin.php">
+  <fieldset>
+    <legend><span>กำหนดเวลาโหวต</span></legend>
+    <div class="item">
+      <label for="start_vote_date">วันที่/เวลา เปิดโหวต</label>
+      <div class="input-groups">
+        <div class="width50">
+          <span class="g-input icon-calendar">
+            <input type="date" name="start_vote_date" id="start_vote_date" value="{START_VOTE_DATE}">
+          </span>
+        </div>
+        <div class="width50">
+          <span class="g-input icon-clock">
+            <input type="time" name="start_vote_time" id="start_vote_time" value="{START_VOTE_TIME}">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <label for="end_vote_date">วันที่/เวลา ปิดโหวต</label>
+      <div class="input-groups">
+        <div class="width50">
+          <span class="g-input icon-calendar">
+            <input type="date" name="end_vote_date" id="end_vote_date" value="{END_VOTE_DATE}">
+          </span>
+        </div>
+        <div class="width50">
+          <span class="g-input icon-clock">
+            <input type="time" name="end_vote_time" id="end_vote_time" value="{END_VOTE_TIME}">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <label for="showResult">การแสดงผลโหวต</label>
+      <span class="g-input icon-bars">
+        <select name="showResult" id="showResult">{SHOWRESULT}</select>
+      </span>
+    </div>
+  </fieldset>
+  <fieldset class="submit right">
+    <button type="submit" class="button save large"><span class="icon-save">บันทึก</span></button>
+  </fieldset>
+  <fieldset>
+    <legend><span>รายการโหวต</span></legend>
+    {LIST}
+  </fieldset>
+</form>
+<script>
+  $G(window).Ready(function() {
+    new GForm("setup_frm", "admin.php/index/model/settings/submit").onsubmit(doFormSubmit);
+  });
+</script>

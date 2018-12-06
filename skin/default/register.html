@@ -1,0 +1,62 @@
+<form id="setup_frm" class="setup_frm" method="post" autocomplete="off" action="{WEBURL}admin.php">
+  <fieldset>
+    <legend><span>รายละเอียดสมาชิก</span></legend>
+    <div class="item">
+      <div class="input-groups">
+        <div class="width50">
+          <label for="register_username">ชื่อผู้ใช้/อีเมล์</label>
+          <span class="g-input icon-email">
+            <input type="text" name="register_username" id="register_username" maxlength="150">
+          </span>
+        </div>
+        <div class="width50">
+          <label for="register_name">ชื่อ นามสกุล</label>
+          <span class="g-input icon-user">
+            <input type="text" name="register_name" id="register_name" maxlength="150">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="input-groups">
+        <div class="width50">
+          <label for="register_password">รหัสผ่าน</label>
+          <span class="g-input icon-password">
+            <input type="password" name="register_password" id="register_password" maxlength="20">
+          </span>
+        </div>
+        <div class="width50">
+          <label for="register_repassword">รหัสผ่านอีกครั้ง</label>
+          <span class="g-input icon-password">
+            <input type="password" name="register_repassword" id="register_repassword" maxlength="20">
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="input-groups">
+        <div class="width50">
+          <label for="register_phone">โทรศัพท์</label>
+          <span class="g-input icon-phone">
+            <input type="text" name="register_phone" id="register_phone" maxlength="13">
+          </span>
+        </div>
+        <div class="width50">
+          <label for="register_status">สถานะ</label>
+          <span class="g-input icon-star0">
+            <select name="register_status" id="register_status">{STATUS}</select>
+          </span>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="submit right">
+    <button type="submit" class="button save large"><span class="icon-save">บันทึก</span></button>
+    <input type="hidden" name="register_id" value="0">
+  </fieldset>
+</form>
+<script>
+  $G(window).Ready(function(){
+    new GForm("setup_frm", "admin.php/index/model/register/submit").onsubmit(doFormSubmit);
+  });
+</script>

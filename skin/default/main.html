@@ -1,0 +1,23 @@
+<header class="header">
+  <div class="table fullwidth">
+	<div id="logo" class="td"><a href="{WEBURL}admin.php"></a><em>V</em>ote</a></div>
+    <div class="td right">
+      <span>สวัสดี,
+        <a class="icon-user loginname" href="admin.php?module=editprofile">{LOGINNAME}</a>
+      </span>
+    </div>
+  </div>
+  <div class="menu_wrapper">
+    <nav id="topmenu" class="topmenu slidemenu">
+      <ul>
+        {MENUS}
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="content">{CONTENT}</main>
+<script src="{WEBURL}js/ddmenu.js"></script>
+<script src="{WEBURL}js/common.js"></script>
+<script>
+	new GDDMenu('topmenu');
+</script>

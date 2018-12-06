@@ -1,0 +1,37 @@
+<div class="gcss-wrapper homepage">
+  <div id="vote_result" class="setup_frm"></div>
+  <script>
+    new GAjax().autoupdate("api.php/vote/get", 10, null, function(xhr) {
+      var ds = xhr.responseText.toJSON();
+      if (ds) {
+        var sortable = [],
+          max = 0;
+        for (var i in ds) {
+          ds[i].vote = floatval(ds[i].vote);
+          max = Math.max(ds[i].vote, max);
+          sortable.push([i, ds[i]]);
+        }
+        sortable.sort(function(a, b) {
+          return b[1].vote - a[1].vote;
+        });
+        var dl = '<dl class="chart">';
+        for (var i in sortable) {
+          dl +=
+            '<dd><img src="datas/' +
+            sortable[i][1].picture +
+            '" alt="' +
+            sortable[i][1].name +
+            '"><span class="item"><span class="label">' +
+            sortable[i][1].name +
+            '</span><span class="bar" style="width:' +
+            (sortable[i][1].vote * 100) / max +
+            '%"><span>' +
+            (sortable[i][1].vote == 0 ? "&nbsp;" : sortable[i][1].vote) +
+            "</span></span></span></dd>";
+        }
+        dl += "</dl>";
+        $E("vote_result").innerHTML = dl;
+      }
+    });
+  </script>
+</div>

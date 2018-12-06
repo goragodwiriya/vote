@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  #RewriteCond %{REQUEST_URI} !^/\.well\-known/acme\-challenge/
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . admin.php [L,QSA]
+</IfModule>
+
+# cache 1 week
+<filesMatch ".(jpg|jpeg|png|gif|ico)$">
+  #Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+<filesMatch ".(css|js|ttf|woff|svg|eot)$">
+  #Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+
+<IfModule mod_headers.c>
+  Header set X-XSS-Protection "1; mode=block"
+  Header append X-FRAME-OPTIONS "SAMEORIGIN"
+</IfModule>

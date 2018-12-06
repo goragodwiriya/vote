@@ -1,0 +1,36 @@
+<form id="setup_frm" class="setup_frm" method="post" autocomplete="off" action="{WEBURL}admin.php">
+  <fieldset>
+    <legend><span>รายละเอียดของผู้เข้ารับการโหวต</span></legend>
+    <div class="item">
+      <label for="write_id">ID</label>
+      <span class="g-input icon-number">
+        <input type="number" name="write_number" id="write_number" value="{NUMBER}">
+      </span>
+    </div>
+    <div class="item">
+      <label for="write_name">ชื่อ</label>
+      <span class="g-input icon-verfied">
+        <input type="text" name="write_name" id="write_name" value="{NAME}" maxlength="150">
+      </span>
+    </div>
+    <div class="item">
+      <div class="usericon">
+        <span><img src="{PICTURE}" alt="Image preview" id="imgPicture"></span>
+      </div>
+      <label for="write_picture">รูปภาพ</label>
+      <span class="g-input icon-image">
+        <input id="write_picture" type="file" class="g-file" name="write_picture" title="อัปโหลดไฟล์ jpg, png, gif ควรตรวจสอบขนาดของรูปภาพให้มีขนาดเท่ากัน เพื่อความสวยงาม" data-preview="imgPicture" accept="image/jpeg,image/jpeg,image/gif,image/png">
+      </span>
+      <div id="result_write_picture" class="comment">อัปโหลดไฟล์ jpg, png, gif ควรตรวจสอบขนาดของรูปภาพให้มีขนาดเท่ากัน เพื่อความสวยงาม</div>
+    </div>
+  </fieldset>
+  <fieldset class="submit right">
+    <button type="submit" class="button save large"><span class="icon-save">บันทึก</span></button>
+    <input type="hidden" name="write_id" id="write_id" value="{ID}">
+  </fieldset>
+</form>
+<script>
+  $G(window).Ready(function() {
+    new GForm("setup_frm", "admin.php/index/model/write/submit").onsubmit(doFormSubmit);
+  });
+</script>
